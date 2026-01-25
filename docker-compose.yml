@@ -1,6 +1,6 @@
 services:
   auth-server:
-    image: auth-server:latest
+    image: untitled-showcase/auth-server:latest
     ports:
       - "9000:9000"
     environment:
@@ -10,7 +10,7 @@ services:
       - TTL_ACCESS_TOKEN=10m
       - TTL_REFRESH_TOKEN=8h
   backend:
-    image: backend:latest
+    image: untitled-showcase/backend:latest
     environment:
       - ISSUER=http://auth-server:9000
       - JWKS_URI=http://auth-server:9000/oauth2/jwks

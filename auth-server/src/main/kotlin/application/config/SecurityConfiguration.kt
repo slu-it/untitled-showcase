@@ -27,6 +27,7 @@ import java.security.interfaces.RSAPrivateKey
 import java.security.interfaces.RSAPublicKey
 import java.util.*
 
+private const val RSA_KEY_SIZE = 2048
 
 @Configuration
 @EnableWebSecurity
@@ -91,7 +92,7 @@ class SecurityConfiguration {
     @Bean
     fun jwkSource(): JWKSource<SecurityContext> {
         val keyPair = getInstance("RSA")
-            .apply { initialize(2048) }
+            .apply { initialize(RSA_KEY_SIZE) }
             .generateKeyPair()
 
         val publicKey = keyPair.public as RSAPublicKey
